@@ -31,13 +31,20 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
+    setPosts(posts.map((postObj, index) => { 
+      if(postObj.id === postId) {
+        return {...postObj, likes: postObj.likes + 1 };
+      }else {
+        return { ...postObj }; 
+      }
+     }));
   };
 
   return (
     <div className='App'>
       {}
       <SearchBar/>
-      <Posts/>
+      <Posts likePost={likePost} posts={posts}/>
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
   );
